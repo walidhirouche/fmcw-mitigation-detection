@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "selection": "For each architecture: maximum validation F1 at threshold 0.5 across seeds 12, 26 and 27; lower seed on an exact tie. Epoch selection: earliest exact maximum within each 120-epoch run.",
+  "main_threshold": 0.5,
+  "models": [
+    {
+      "key": "full",
+      "label": "Full model",
+      "seed": 27,
+      "epoch": 118,
+      "training_epochs": 120,
+      "validation_F1": 0.9733163913595934,
+      "validation_counts": {
+        "epoch": 118,
+        "F1": 0.9733163913595934,
+        "TP": 10724,
+        "FP": 105,
+        "FN": 483
+      },
+      "source_checkpoint_sha256": "981867057e195ecb5b2f405adc1694e6b31cf855a16d12490c3ed1586767b67f",
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "checkpoint": "weights/full_seed27_epoch0118.pt",
+      "threshold": 0.5,
+      "calibrated_threshold": 0.8473780893356974,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.95814852856413,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "981867057e195ecb5b2f405adc1694e6b31cf855a16d12490c3ed1586767b67f",
+        "epoch": 118,
+        "training": false
+      },
+      "sha256": "aa8f02b493ecdaa597e21bcd0b3281b3ef60e549d5e6225e16083ec9223a6316",
+      "bytes": 1109435
+    },
+    {
+      "key": "unconditioned",
+      "label": "No conditioning",
+      "seed": 27,
+      "epoch": 116,
+      "training_epochs": 120,
+      "validation_F1": 0.9683981111514711,
+      "validation_counts": {
+        "epoch": 116,
+        "F1": 0.9683981111514711,
+        "TP": 10664,
+        "FP": 153,
+        "FN": 543
+      },
+      "source_checkpoint_sha256": "227e34afeb8fb08a95ee0f94a5e5e1de6e41d800ce056d5aa059a65a3fa5f339",
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": false,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "checkpoint": "weights/unconditioned_seed27_epoch0116.pt",
+      "threshold": 0.5,
+      "calibrated_threshold": 0.6680153999862147,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.81438574540495,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "227e34afeb8fb08a95ee0f94a5e5e1de6e41d800ce056d5aa059a65a3fa5f339",
+        "epoch": 116,
+        "training": false
+      },
+      "sha256": "907f4154ac3fbced7df8f46777adfd6ffa9ca9d12331cf3ce252c5d49295959b",
+      "bytes": 1089333
+    },
+    {
+      "key": "unet_iq",
+      "label": "I/Q U-Net",
+      "seed": 12,
+      "epoch": 112,
+      "training_epochs": 120,
+      "validation_F1": 0.9255848914779667,
+      "validation_counts": {
+        "epoch": 112,
+        "F1": 0.9255848914779667,
+        "TP": 9851,
+        "FP": 228,
+        "FN": 1356
+      },
+      "source_checkpoint_sha256": "1466c0e3d1a109122b40662bffbeca44b9edcdaa244a266c9b1278ca0b041ef8",
+      "model_config": {
+        "width": 86,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "unet"
+      },
+      "checkpoint": "weights/unet_iq_seed12_epoch0112.pt",
+      "threshold": 0.5,
+      "calibrated_threshold": 0.837840642483218,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 9.061325599004684,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "1466c0e3d1a109122b40662bffbeca44b9edcdaa244a266c9b1278ca0b041ef8",
+        "epoch": 112,
+        "training": false
+      },
+      "sha256": "2b586716fd3fd2556a07241c9b73b30fd7f138da12bd03c777889a757f2c4c90",
+      "bytes": 1079813
+    }
+  ]
+}

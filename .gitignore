@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv*/
+.ipynb_checkpoints/
+/dataset/*.zip
+/dataset/generated/
+/dataset/extracted/
+/training/runs/
+/training/cache/
+*.partial
+
+/dataset/datasets/

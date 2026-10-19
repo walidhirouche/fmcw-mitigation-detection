@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: fmcw-demo
+    runtime: python
+    plan: free
+    buildCommand: python -m pip install -r dataset/requirements.txt
+    startCommand: python demo/server.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.12
+      - key: BIND_HOST
+        value: 0.0.0.0

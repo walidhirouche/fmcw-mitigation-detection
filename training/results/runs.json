@@ -1,0 +1,499 @@
+{
+  "main_threshold": 0.5,
+  "seed_order": [
+    12,
+    26,
+    27
+  ],
+  "runs": [
+    {
+      "model": "full",
+      "seed": 12,
+      "epoch": 115,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "training": {
+        "seed": 12,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "e277f1cc054431f88762972d85d01fc6c00c996a315fa4cc247ef832a5560ad5",
+      "selected_validation_counts": {
+        "epoch": 115,
+        "F1": 0.9732518669382213,
+        "TP": 10752,
+        "FP": 136,
+        "FN": 455
+      },
+      "calibrated_threshold": 0.6169161090001487,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.898593857768802,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "e277f1cc054431f88762972d85d01fc6c00c996a315fa4cc247ef832a5560ad5",
+        "epoch": 115,
+        "training": false
+      },
+      "provided_weights": false
+    },
+    {
+      "model": "sans_condition",
+      "seed": 12,
+      "epoch": 114,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": false,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "training": {
+        "seed": 12,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "7f52a06ff9cb1854bbf50e16fe5290bd13aaec9f397d439d19030b9f8b8a1c3d",
+      "selected_validation_counts": {
+        "epoch": 114,
+        "F1": 0.9638959621680611,
+        "TP": 10599,
+        "FP": 186,
+        "FN": 608
+      },
+      "calibrated_threshold": 0.6216570298100784,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.58338717195781,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "7f52a06ff9cb1854bbf50e16fe5290bd13aaec9f397d439d19030b9f8b8a1c3d",
+        "epoch": 114,
+        "training": false
+      },
+      "provided_weights": false
+    },
+    {
+      "model": "unet_IQ_86",
+      "seed": 12,
+      "epoch": 112,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 86,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "unet"
+      },
+      "training": {
+        "seed": 12,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "1466c0e3d1a109122b40662bffbeca44b9edcdaa244a266c9b1278ca0b041ef8",
+      "selected_validation_counts": {
+        "epoch": 112,
+        "F1": 0.9255848914779667,
+        "TP": 9851,
+        "FP": 228,
+        "FN": 1356
+      },
+      "calibrated_threshold": 0.837840642483218,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 9.061325599004684,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "1466c0e3d1a109122b40662bffbeca44b9edcdaa244a266c9b1278ca0b041ef8",
+        "epoch": 112,
+        "training": false
+      },
+      "provided_weights": true
+    },
+    {
+      "model": "full",
+      "seed": 26,
+      "epoch": 108,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "training": {
+        "seed": 26,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "c69377b0f6ab8cdfa3118dbda664dfe4f11f9fb12ba725e0a624f5457eb01cbe",
+      "selected_validation_counts": {
+        "epoch": 108,
+        "F1": 0.9723456342370115,
+        "TP": 10724,
+        "FP": 127,
+        "FN": 483
+      },
+      "calibrated_threshold": 0.8492378684983616,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.361412364537523,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "c69377b0f6ab8cdfa3118dbda664dfe4f11f9fb12ba725e0a624f5457eb01cbe",
+        "epoch": 108,
+        "training": false
+      },
+      "provided_weights": false
+    },
+    {
+      "model": "sans_condition",
+      "seed": 26,
+      "epoch": 117,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": false,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "training": {
+        "seed": 26,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "7675eff12e862e81df7b102c68a7d3a3a256dfdcdb1ad06e3168255eaa889914",
+      "selected_validation_counts": {
+        "epoch": 117,
+        "F1": 0.9663053829758288,
+        "TP": 10654,
+        "FP": 190,
+        "FN": 553
+      },
+      "calibrated_threshold": 0.7017845420133042,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.630956432302309,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "7675eff12e862e81df7b102c68a7d3a3a256dfdcdb1ad06e3168255eaa889914",
+        "epoch": 117,
+        "training": false
+      },
+      "provided_weights": false
+    },
+    {
+      "model": "unet_IQ_86",
+      "seed": 26,
+      "epoch": 109,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 86,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "unet"
+      },
+      "training": {
+        "seed": 26,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "05175f7929bef1735c663a298cf6e5c1f43e589b2cd3c4d8ee9440d7333c74ff",
+      "selected_validation_counts": {
+        "epoch": 109,
+        "F1": 0.9201402046229632,
+        "TP": 9713,
+        "FP": 192,
+        "FN": 1494
+      },
+      "calibrated_threshold": 0.8448365919663443,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 9.146563158448044,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "05175f7929bef1735c663a298cf6e5c1f43e589b2cd3c4d8ee9440d7333c74ff",
+        "epoch": 109,
+        "training": false
+      },
+      "provided_weights": false
+    },
+    {
+      "model": "full",
+      "seed": 27,
+      "epoch": 118,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "training": {
+        "seed": 27,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "981867057e195ecb5b2f405adc1694e6b31cf855a16d12490c3ed1586767b67f",
+      "selected_validation_counts": {
+        "epoch": 118,
+        "F1": 0.9733163913595934,
+        "TP": 10724,
+        "FP": 105,
+        "FN": 483
+      },
+      "calibrated_threshold": 0.8473780893356974,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.95814852856413,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "981867057e195ecb5b2f405adc1694e6b31cf855a16d12490c3ed1586767b67f",
+        "epoch": 118,
+        "training": false
+      },
+      "provided_weights": true
+    },
+    {
+      "model": "sans_condition",
+      "seed": 27,
+      "epoch": 116,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 24,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": false,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "conditioned_operator"
+      },
+      "training": {
+        "seed": 27,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "227e34afeb8fb08a95ee0f94a5e5e1de6e41d800ce056d5aa059a65a3fa5f339",
+      "selected_validation_counts": {
+        "epoch": 116,
+        "F1": 0.9683981111514711,
+        "TP": 10664,
+        "FP": 153,
+        "FN": 543
+      },
+      "calibrated_threshold": 0.6680153999862147,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 8.81438574540495,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "227e34afeb8fb08a95ee0f94a5e5e1de6e41d800ce056d5aa059a65a3fa5f339",
+        "epoch": 116,
+        "training": false
+      },
+      "provided_weights": true
+    },
+    {
+      "model": "unet_IQ_86",
+      "seed": 27,
+      "epoch": 97,
+      "training_epochs": 120,
+      "model_config": {
+        "width": 86,
+        "depth": 4,
+        "modes": 24,
+        "conditioning": true,
+        "spectral": true,
+        "temporal": true,
+        "stft": true,
+        "architecture": "unet"
+      },
+      "training": {
+        "seed": 27,
+        "batch_size": 16,
+        "effective_batch": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "patience": 20,
+        "warmup": 3,
+        "phase_augmentation": true,
+        "weak_balancing": true,
+        "presence_loss": true,
+        "group_dro": true,
+        "fp_budget": 0.1
+      },
+      "source_checkpoint_sha256": "67697c141756a2bd976973eeec1a82fb7966e9ff587b83a9766db31bf0e9c5ff",
+      "selected_validation_counts": {
+        "epoch": 97,
+        "F1": 0.9233165022887074,
+        "TP": 9783,
+        "FP": 201,
+        "FN": 1424
+      },
+      "calibrated_threshold": 0.8671671101929622,
+      "calibrated_cfar_thresholds": {
+        "y": 4.296681172653818,
+        "reconstruction": 9.081688676089177,
+        "interpolation": 3.6044901066167934
+      },
+      "evaluation_environment": {
+        "device": "cpu",
+        "torch": "2.11.0+cu128",
+        "numpy": "2.1.3",
+        "threads": 2,
+        "checkpoint_sha256": "67697c141756a2bd976973eeec1a82fb7966e9ff587b83a9766db31bf0e9c5ff",
+        "epoch": 97,
+        "training": false
+      },
+      "provided_weights": false
+    }
+  ],
+  "source_hash": "02f2ccc6fa556d8da105b02c416ab8bc18f72919ca7d1593cb52277cf60a061d",
+  "evaluation": "Existing secondary evaluations on previously inspected simulated tests; no new inference for this packaging.",
+  "aggregation": "Mean and sample SD of three separate per-run scores, not an ensemble."
+}
