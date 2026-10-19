@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="local-token" content="__LOCAL_TOKEN__">
+<title>FMCW Dataset Generator</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<main class="window" aria-labelledby="title">
+<header class="titlebar"><h1 id="title">FMCW Dataset Generator</h1><span class="format">HDF5 · single chirp</span></header>
+<div id="form-scroll" class="form-scroll">
+<fieldset class="dataset-settings"><legend>Dataset</legend>
+<div class="row"><label for="preset">Configuration</label><select id="preset"><option value="custom">Custom</option></select></div>
+<div class="row"><label for="folder">Folder</label><input id="folder" data-path="folder" type="text"><button id="browse" type="button">Browse…</button></div>
+<div class="dataset-line"><label for="name">File</label><input id="name" data-path="name" type="text"><span class="suffix">.h5</span><label for="count">Scenes</label><input id="count" data-path="count" type="number" min="1" step="1"><label for="seed">Seed</label><input id="seed" data-path="seed" type="number" min="0" max="9007199254740991" step="1"><button id="random-seed" title="New seed" type="button">↻</button></div>
+</fieldset>
+<div class="form-grid">
+<fieldset><legend>Radar</legend><div id="radar-fields"></div>
+<div class="row"><label for="reception">I/Q reception</label><select id="reception" data-path="radar.reception"><option value="symmetric">Symmetric (−fs/2, fs/2)</option><option value="unilateral">Unilateral (0, fs)</option></select></div>
+<div class="calculated" id="radar-summary" aria-live="polite"></div>
+</fieldset>
+<fieldset><legend>Targets</legend><div id="target-fields"></div>
+<div class="row"><label id="rcs-mode-label">RCS</label><div class="segmented" id="rcs-modes" role="group" aria-labelledby="rcs-mode-label"><button data-rcs="fixed" type="button">Fixed</button><button data-rcs="uniform" type="button">Uniform</button></div></div>
+<div class="row" id="rcs-fixed-row"><label for="rcs-fixed">RCS (m²)</label><input id="rcs-fixed" data-path="targets.rcs_fixed_m2" type="number" min="0.000001" step="any"></div><div id="rcs-range"></div>
+</fieldset>
+<fieldset><legend>Noise</legend><div id="noise-fields"></div></fieldset>
+<fieldset><legend>Interference</legend><div id="neighbor-fields"></div><div id="neighbor-levels"></div></fieldset>
+</div>
+<fieldset class="composition"><legend>Scenes (%)</legend><div class="profile" id="profile-fields"></div></fieldset>
+<details class="advanced"><summary>Advanced</summary><div class="form-grid">
+<fieldset><legend>Modes</legend>
+<div class="row"><label for="frequency-reference">Frequency reference</label><select id="frequency-reference" data-path="radar.frequency_reference"><option value="start">Ramp start</option><option value="center">Ramp centre</option><option value="end">Ramp end</option></select></div>
+<div class="row"><label for="noise-mode">Noise</label><select id="noise-mode" data-path="noise.mode"><option value="level">Independent RMS</option><option value="snr">Time-domain SNR (dB)</option></select></div>
+<div class="row"><label for="power-mode">Interference</label><select id="power-mode" data-path="neighbors.power_mode"><option value="level">Independent amplitude</option><option value="sir">Time-domain SIR (dB)</option></select></div>
+<div class="row"><label for="fft-factor">FFT (preview)</label><select id="fft-factor" data-path="fft_factor"><option value="1">×1</option><option value="2">×2</option><option value="4">×4</option><option value="8">×8</option></select></div>
+</fieldset>
+<fieldset><legend>Interfering ramps</legend>
+<div class="row"><label for="neighbor-mode">Construction</label><select id="neighbor-mode" data-path="neighbors.mode"><option value="linked">Same bandwidth, slope × k</option><option value="independent">Independent bandwidth and duration</option></select></div><div id="neighbor-advanced"></div>
+</fieldset>
+</div></details>
+<div class="config-actions"><button id="save-config" type="button">Export JSON</button><button id="load-config" type="button">Import JSON</button><input id="config-file" type="file" accept=".json,application/json" hidden><span id="estimate"></span></div>
+</div>
+<footer>
+<div class="statistics"><span id="stat-count">0 / 0</span><span id="stat-speed">— scenes/s</span><span id="stat-time">— s</span><span id="stat-eta">Remaining: —</span><span id="stat-size"></span></div>
+<div class="progress-line"><progress id="progress" max="100" value="0"></progress><span id="progress-text">0 %</span></div>
+<p id="status" role="status" aria-live="polite">Loading…</p>
+<div class="actions"><button id="preview" type="button" disabled>Preview</button><button id="generate" class="primary" type="button" disabled>Generate</button><button id="cancel" type="button" hidden>Cancel</button><button id="open-output" type="button" hidden>Open folder</button><button id="reset" type="button">Reset</button><button id="quit" type="button">Close</button></div>
+</footer>
+</main>
+<dialog id="folder-dialog"><header><h2>Choose a folder</h2><button data-close="folder-dialog" aria-label="Close">×</button></header><div class="row"><button id="parent-folder">↑ Parent</button><input id="folder-path" aria-label="Folder path"><button id="go-folder">Go</button></div><div id="folder-list"></div><footer><button id="choose-folder" class="primary">Use this folder</button><button data-close="folder-dialog">Cancel</button></footer></dialog>
+<dialog id="preview-dialog"><header><h2>Preview</h2><button data-close="preview-dialog" aria-label="Close">×</button></header>
+<div class="preview-toolbar"><label>Sample <input id="preview-index" type="number" value="0" min="0" step="1"></label><button id="preview-next">Next</button><label>View <select id="plot-view"><option value="distance">FFT · distance</option><option value="frequency">FFT · signed frequency</option><option value="time">Time-domain I/Q</option></select></label><div class="scale-control"><span id="scale-caption">FFT scale</span><div class="segmented" role="group" aria-labelledby="scale-caption"><button type="button" data-scale="linear" class="active" aria-pressed="true">Linear</button><button type="button" data-scale="db" aria-pressed="false">dB</button></div></div><label>Window <select id="plot-window"><option value="rectangular">Rectangular</option><option value="hann">Hann (diagnostic)</option></select></label><button id="zoom-reset">Reset view</button></div>
+<p id="preview-summary" class="hint"></p><div class="legend"><label><input type="checkbox" data-wave="s" checked><i class="line clean"></i>s · targets only</label><label><input type="checkbox" data-wave="sn" checked><i class="line noise"></i>sn · with noise</label><label><input type="checkbox" data-wave="y" checked><i class="line interfered"></i>y · with interference</label></div>
+
+<div id="cfar-panel" class="cfar-panel"><label><input id="cfar-enabled" type="checkbox" checked> CFAR CA</label><label>Training / side <input id="cfar-training" type="number" min="1" max="128" step="1" value="32"></label><label>Guard / side <input id="cfar-guard" type="number" min="0" max="64" step="1" value="4"></label><label>Pfa <input id="cfar-pfa" type="number" min="0.000000001" max="0.1" step="any" value="0.001"></label></div>
+<div class="chart"><canvas id="signal-chart" aria-label="Interactive time signals or spectra"></canvas><output id="chart-tooltip"></output></div>
+<div id="cfar-results" class="cfar-results" aria-live="polite"></div>
+<div class="chart label-chart"><canvas id="label-chart" aria-label="Presence labels from target positions"></canvas></div><p id="target-list" class="hint"></p><p id="preview-message" role="status"></p>
+</dialog>
+</body></html>
