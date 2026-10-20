@@ -12,6 +12,8 @@ Configure radar, targets, noise and interference, load seeded presets, and previ
 - **[dataset/](dataset/README.md)** — datasets, red graphical generator, configurations and fixed splits.
 - **[training/](training/README.md)** — training code, training/inference notebooks and epoch-120 weights.
 
+- **[demo/](demo/README.md)**: web adapter for preview, generation and temporary HDF5 downloads, with hosting instructions. Not deployed yet.
+
 Graphical dataset generator:
 
 ```bash
